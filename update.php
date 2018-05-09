@@ -1,20 +1,21 @@
 <?php
-$username = $_GET['username'];
-$password = $_GET['password'];
+include_once("connect.php");
+require("homepage.html");
 
-//Connection to MySQL server
-$link = mysqli_connect("localhost",$username,$password,"menagerie1");
-if ($link){
-	echo 'You are connected to MySQL.';
-}
-else{
-	echo "Couldn't connect to MySQL.";
-}
-
-//Connection to the database
+$name = $_POST['name'];
+$owner = $_POST['owner'];
+$species = $_POST['species'];
+$sex = $_POST['sex'];
+$birth = $_POST['birth'];
+$death = $_POST['death'];
 
 //Insert record
-$query=("UPDATE pet SET sex=\"m\" WHERE name=\"Chocho\"");
+$query=("UPDATE pet SET owner='$owner' WHERE name='$name'");
+$query=("UPDATE pet SET species='$species' WHERE name='$name'");
+$query=("UPDATE pet SET sex='$sex' WHERE name='$name'");
+$query=("UPDATE pet SET birth='$birth' WHERE name='$name'");
+$query=("UPDATE pet SET death='$death' WHERE name='$name'");
 
+print "Information has been updated successfully.<br>";
 mysqli_query($link,$query);
 ?>

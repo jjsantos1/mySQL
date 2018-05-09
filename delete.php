@@ -1,20 +1,12 @@
 <?php
-$username = $_GET['username'];
-$password = $_GET['password'];
+include_once("connect.php");
+require("homepage.html");
 
-//Connection to MySQL server
-$link = mysqli_connect("localhost",$username,$password,"menagerie1");
-if ($link){
-	echo 'You are connected to MySQL.';
-}
-else{
-	echo "Couldn't connect to MySQL.";
-}
-
-//Connection to the database
+$name = $_POST['name'];
 
 //Insert record
-$query=("DELETE FROM pet WHERE name=\"Chocho\"");
+$query=("DELETE FROM pet WHERE name='$name'");
 
+print "$name has been successfully deleted.";
 mysqli_query($link,$query);
 ?>

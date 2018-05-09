@@ -2,8 +2,10 @@
 include_once("connect.php");
 require("homepage.html");
 
-//Insert record
-$query=("SELECT * FROM pet");
+$name = $_POST['name'];
+
+//Search record
+$query=("SELECT * FROM pet WHERE name='$name'");
 
 $result=mysqli_query($link,$query);
 $num_rows=mysqli_num_rows($result);
